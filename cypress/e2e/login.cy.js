@@ -5,13 +5,13 @@ describe('Orange HRM tests spec', () => {
   const selectorsList = {
     usernameField: "[name='username']",
     passwordField: "[name='password']",
-    loginButton: ".oxd-button",
-    sectionTitleTopBar: ".oxd-topbar-header-breadcrumb > .oxd-text",
+    loginButton: "[type='submit']",
+    sectionTitleTopBar: ".oxd-topbar-header-breadcrumb-module",
     dashboardGrid: ".orangehrm-dashboard-grid",
-    wrongCredentialAlert: ".oxd-alert"
+    wrongCredentialAlert: "[role='alert']"
   }
   it('Login - Success', () => {
-    cy.visit('https://opensource-demo.orangehrmlive.com/web/index.php/auth/login')
+    cy.visit('/auth/login')
     cy.wait(1000)
     cy.get(selectorsList.usernameField).type(userData.userSuccess.username)
     cy.get(selectorsList.passwordField).type(userData.userSuccess.password)
@@ -21,7 +21,7 @@ describe('Orange HRM tests spec', () => {
    })
 
   it('Login - Fail', () => {
-    cy.visit('https://opensource-demo.orangehrmlive.com/web/index.php/auth/login')
+    cy.visit('/auth/login')
     cy.get(selectorsList.usernameField).type(userData.userFail.username)
     cy.get(selectorsList.passwordField).type(userData.userFail.password)
     cy.get(selectorsList.loginButton).click()
