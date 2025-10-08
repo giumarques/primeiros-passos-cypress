@@ -15,7 +15,9 @@ describe('Orange HRM tests spec', () => {
     genericField: ".oxd-input--active",
     dateField: "[placeholder='yyyy-dd-mm']",
     dateCloseButton: ".--close",
-    buttonSubmit: "[type='submit']"
+    buttonSubmit: "[type='submit']",
+    arrowButton: ".oxd-select-text--arrow",
+    selectOption: ".oxd-radio-wrapper"
     
   }
   it.only('User Info Update - Success', () => {
@@ -33,9 +35,24 @@ describe('Orange HRM tests spec', () => {
     cy.get(selectorsList.genericField).eq(5).clear().type('DVlic')
     cy.get(selectorsList.genericField).eq(6).clear().type('2030-01-01')
     cy.get(selectorsList.dateCloseButton).click()
+    cy.get(selectorsList.arrowButton).eq(0).click()
+    cy.get('.oxd-select-option').contains('Belgian').click()
+    cy.get(selectorsList.arrowButton).eq(1).click()
+    cy.get('.oxd-select-option').contains('Married').click()
+    cy.get(selectorsList.genericField).eq(8).clear().type('2040-01-01')
+    cy.get(selectorsList.dateCloseButton).click()
+    cy.get('.oxd-radio-wrapper').contains('Female').click()
     cy.get(selectorsList.buttonSubmit).eq(0).click()
     cy.get('body').should('contain', "Successfully Updated")
     cy.get('.oxd-toast-close')
+    cy.get(selectorsList.arrowButton).eq(2).click()
+    cy.get('.oxd-select-option').contains('B+').click()
+    cy.get(selectorsList.arrowButton).eq(3).click()
+    cy.get('.oxd-select-option').contains('Yes').click()
+    cy.get(selectorsList.genericField).eq(9).clear().type('BloodTest')
+    cy.get(selectorsList.buttonSubmit).eq(1).click()
+    cy.get('body').should('contain', "Successfully Updated")
+
 
 
    })
