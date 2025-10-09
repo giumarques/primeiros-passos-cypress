@@ -48,10 +48,10 @@ class MyInfoPage {
         cy.get('.oxd-radio-wrapper').contains('Female').click()
     }
 
-    fillMedicalStatus() {
+    fillMedicalStatus(testField) {
         cy.get(this.selectorsList().arrowButton).eq(2).click()
         cy.get('.oxd-select-option').contains('B+').click()
-        cy.get(this.selectorsList().genericField).eq(9).clear().type('BloodTest')
+        cy.get(this.selectorsList().genericField).eq(9).clear().type(testField)
     }
 }
 

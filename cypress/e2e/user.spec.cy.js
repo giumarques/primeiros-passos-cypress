@@ -12,11 +12,12 @@ const menuPage = new MenuPage()
 const myInfoPage = new MyInfoPage()
 const chance = new Chance();
 
-
 describe('Orange HRM tests spec', () => {
 
   it('User Info Update - Success', () => {
   
+    const testField = chance.word({ length: 8 })
+
     loginPage.accessLoginPage()
     loginPage.loginWithUser(userData.userSuccess.username, userData.userSuccess.password)
 
@@ -28,7 +29,7 @@ describe('Orange HRM tests spec', () => {
     myInfoPage.fillEmployeeDetails(chance.integer({min: 5, max: 8}), chance.ssn(), chance.cpf(), ('2028-01-01'))
     myInfoPage.fillStatus()
     myInfoPage.saveForm()
-    myInfoPage.fillMedicalStatus(chance.word())
+    myInfoPage.fillMedicalStatus(testField)
     myInfoPage.saveForm()
 
    
