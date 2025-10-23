@@ -41,13 +41,13 @@ npm install cypress --save-dev
 
 This project uses Chance.js to generate random test data for:
 
-# Names
+- Names
 
-# Employee IDs
+- Employee IDs
 
-# Social security numbers
+- Social security numbers
 
-# Other personal details
+- Other personal details
 
 Install Chance.js if not already included:
 
